@@ -1,0 +1,27 @@
+[project]
+name = "app-service"
+version = "0.0.1"
+description = "Backend server for the application"
+authors = [
+    {name = "shreyas",email = "shreyaskalvankar@gmail.com"}
+]
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+    "flask (>=3.1.0,<4.0.0)",
+    "python-dotenv (>=1.1.0,<2.0.0)"
+]
+
+[build-system]
+requires = ["poetry-core>=2.0.0,<3.0.0"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.poetry]
+package-mode = false
+
+[tool.poetry.group.dev.dependencies]
+pynvim = "^0.5.2"
+black = "^25.1.0"
+isort = "^6.0.1"
+pylint = "^3.3.6"
+
