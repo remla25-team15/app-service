@@ -1,6 +1,8 @@
 import requests
 from flask import Blueprint, current_app, jsonify, request
 
+from app.config import MODEL_SERVICE_URL
+
 predict_bp = Blueprint("predict", __name__, url_prefix="/api")
 
 
@@ -22,9 +24,10 @@ def predict():
       503:
         description: Service unavailable
     """
-    model_url = current_app.config["MODEL_SERVICE_URL"]
     try:
-        response = requests.post(f"{model_url}/predict", json=request.json, timeout=5)
+        response = requests.post(
+            f"{MODEL_SERVICE_URL}/predict", json=request.json, timeout=5
+        )
         return jsonify(response.json()), response.status_code
     except Exception as e:
         return (

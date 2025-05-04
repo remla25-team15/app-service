@@ -1,6 +1,8 @@
 import requests
 from flask import Blueprint, current_app, jsonify
 
+from app.config import MODEL_SERVICE_URL
+
 version_bp = Blueprint("version", __name__, url_prefix="/api")
 
 
@@ -22,9 +24,8 @@ def get_versions():
               type: string
               example: "1.0.0"
     """
-    model_url = ""
     try:
-        response = requests.get(f"{model_url}/version", timeout=2)
+        response = requests.get(f"{MODEL_SERVICE_URL}/version", timeout=2)
         model_version = response.json().get("model_version", "unknown")
     except Exception:
         model_version = "unreachable"
