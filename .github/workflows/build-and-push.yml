@@ -6,7 +6,7 @@ on:
 
 env:
   REGISTRY: ghcr.io
-  IMG: ${{ github.repository }}/app-service
+  IMG: ${{ github.repository }}
 
 jobs:
   build-and-push:
