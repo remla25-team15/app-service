@@ -1,15 +1,13 @@
 import requests
 from flask import Blueprint, current_app, jsonify, request
 
-from app.config import MODEL_SERVICE_URL
-
-predict_bp = Blueprint("predict", __name__, url_prefix="/api")
+feedback_bp = Blueprint("feedback", __name__, url_prefix="/api")
 
 
-@predict_bp.route("/predict", methods=["POST"])
+@feedback_bp.route("/feedback", methods=["POST"])
 def predict():
     """
-    Make a prediction using the model service
+    Provide Feedback on the sentiment
     ---
     parameters:
       - name: body
@@ -17,19 +15,16 @@ def predict():
         required: true
         schema:
           type: object
-          example: {"data": "your input data here"}
+          example: {"text": "your input data here"}
     responses:
       200:
-        description: Successful prediction
+        description: Successful something
       503:
         description: Service unavailable
     """
     try:
         print(f"Data: {request.json}")
-        response = requests.post(
-            f"{MODEL_SERVICE_URL}/predict", json=request.json, timeout=5
-        )
-        return jsonify(response.json()), response.status_code
+        return jsonify({"response": "received"}), 200
     except Exception as e:
         return (
             jsonify({"error": "Failed to contact model-service", "details": str(e)}),
