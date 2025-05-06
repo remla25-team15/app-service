@@ -17,7 +17,11 @@ def predict():
         required: true
         schema:
           type: object
-          example: {"data": "your input data here"}
+          properties:
+              text:
+                type: string
+          example:
+              text: "your input data here"}
     responses:
       200:
         description: Successful prediction

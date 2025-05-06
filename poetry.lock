@@ -463,6 +463,25 @@ files = [
 referencing = ">=0.31.0"
 
 [[package]]
+name = "libversion"
+version = "0.0.1"
+description = ""
+optional = false
+python-versions = "*"
+groups = ["main"]
+files = []
+develop = false
+
+[package.dependencies]
+toml = ">=0.10.2"
+
+[package.source]
+type = "git"
+url = "https://github.com/remla25-team15/lib-version.git"
+reference = "v0.0.2"
+resolved_reference = "56dddb9d2fbc240ca2aee98b748e68be5e5b2686"
+
+[[package]]
 name = "markupsafe"
 version = "3.0.2"
 description = "Safely add untrusted strings to HTML/XML markup."
@@ -992,6 +1011,18 @@ files = [
 ]
 
 [[package]]
+name = "toml"
+version = "0.10.2"
+description = "Python Library for Tom's Obvious, Minimal Language"
+optional = false
+python-versions = ">=2.6, !=3.0.*, !=3.1.*, !=3.2.*"
+groups = ["main"]
+files = [
+    {file = "toml-0.10.2-py2.py3-none-any.whl", hash = "sha256:806143ae5bfb6a3c6e736a764057db0e6a0e05e338b5630894a5f779cabb4f9b"},
+    {file = "toml-0.10.2.tar.gz", hash = "sha256:b3bda1d108d5dd99f4a20d24d9c348e91c4db7ab1b749200bded2f839ccbe68f"},
+]
+
+[[package]]
 name = "tomli"
 version = "2.2.1"
 description = "A lil' TOML parser"
@@ -1098,4 +1129,4 @@ watchdog = ["watchdog (>=2.3)"]
 [metadata]
 lock-version = "2.1"
 python-versions = ">=3.10"
-content-hash = "76d2ea6ffe54a443b134a8a629d6cb7e2a504958adff95624b90652eaf96e4b7"
+content-hash = "f6a325e8234bebd94ce64c34be476dea21cbca708474efb3545d97f6c42b5b56"
