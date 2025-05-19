@@ -81,8 +81,6 @@ jobs:
       - name: Bump version to next pre-release
         run: bumpver update --set-version ${{ env.NEXT_VERSION }}
 
-      - name: Commit and push changes
+      - name: Push changes to origin
         run: |
-          git add pyproject.toml
-          git commit -m "chore: bump version to ${{ env.NEXT_VERSION }} after release"
           git push origin main
