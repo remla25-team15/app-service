@@ -37,6 +37,6 @@ version_files = ["pyproject.toml:project.version"]
 
 [tool.bumpver.file_patterns]
 "pyproject.toml" = [
-  '^version = "{version}"',  # This line will match and update the [project] version field!
+  '^version = "{version}"',  #  Matches and updates the [project] version field
   '^current_version = "{version}"'
 ]
