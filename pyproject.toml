@@ -1,6 +1,6 @@
 [project]
 name = "app-service"
-version = "1.0.0"
+version = "1.0.14"
 description = "Backend server for the application"
 authors = [
     {name = "shreyas",email = "shreyaskalvankar@gmail.com"}
@@ -28,3 +28,15 @@ black = "^25.1.0"
 isort = "^6.0.1"
 pylint = "^3.3.6"
 
+[tool.bumpver]
+current_version = "1.0.14"
+version_pattern = "MAJOR.MINOR.PATCH[-TAG]"
+commit = true
+tag = false
+version_files = ["pyproject.toml:project.version"]
+
+[tool.bumpver.file_patterns]
+"pyproject.toml" = [
+    '^version = "{version}"',
+    '^current_version = "{version}"'
+]

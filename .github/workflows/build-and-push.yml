@@ -49,3 +49,40 @@ jobs:
             ${{ env.IMG }}:${{ env.version_major }}.${{ env.version_minor }}.latest
             ${{ env.IMG }}:${{ env.version_major }}.latest
             ${{ env.IMG }}:latest
+
+  bump-version:
+    runs-on: ubuntu-24.04
+    needs: build-and-push
+    steps:
+      - name: Checkout main branch
+        uses: actions/checkout@v4
+        with:
+          ref: main
+
+      - name: Configure Git
+        run: |
+          git config user.name "github-actions"
+          git config user.email "github-actions@users.noreply.github.com"
+
+      - name: Install bumpver
+        run: pip install bumpver
+
+      - name: Determine next pre-release version
+        id: set_version
+        run: |
+          CURRENT_VERSION=${GITHUB_REF#refs/tags/v}
+          MAJOR=$(echo $CURRENT_VERSION | cut -d. -f1)
+          MINOR=$(echo $CURRENT_VERSION | cut -d. -f2)
+          PATCH=$(echo $CURRENT_VERSION | cut -d. -f3)
+          NEXT_PATCH=$((PATCH + 1))
+          NEXT_VERSION="${MAJOR}.${MINOR}.${NEXT_PATCH}-alpha"
+          echo "NEXT_VERSION=$NEXT_VERSION" >> $GITHUB_ENV
+
+      - name: Bump version to next pre-release
+        run: bumpver update --set-version ${{ env.NEXT_VERSION }}
+
+      - name: Commit and push changes
+        run: |
+          git add pyproject.toml
+          git commit -m "chore: bump version to ${{ env.NEXT_VERSION }} after release"
+          git push origin main
