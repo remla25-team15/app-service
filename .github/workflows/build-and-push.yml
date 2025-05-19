@@ -80,7 +80,7 @@ jobs:
           echo "NEXT_VERSION=$NEXT_VERSION" >> $GITHUB_ENV
 
       - name: Bump version to next pre-release
-        run: bumpver update --new-version ${{ env.NEXT_VERSION }}
+        run: bumpver update --set-version ${{ env.NEXT_VERSION }}
 
       - name: Commit and push changes
         run: |
