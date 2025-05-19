@@ -32,7 +32,7 @@ pylint = "^3.3.6"
 current_version = "1.0.14-beta"
 version_pattern = "MAJOR.MINOR.PATCH[-TAG]"
 commit = true
-tag = true
+tag = false
 version_files = ["pyproject.toml:project.version"]
 
 [tool.bumpver.file_patterns]
