@@ -76,7 +76,7 @@ jobs:
           MINOR=$(echo $CURRENT_VERSION | cut -d. -f2)
           PATCH=$(echo $CURRENT_VERSION | cut -d. -f3)
           NEXT_PATCH=$((PATCH + 1))
-          NEXT_VERSION="${MAJOR}.${MINOR}.${NEXT_PATCH}-pre"
+          NEXT_VERSION="${MAJOR}.${MINOR}.${NEXT_PATCH}-alpha"
           echo "NEXT_VERSION=$NEXT_VERSION" >> $GITHUB_ENV
 
       - name: Bump version to next pre-release
