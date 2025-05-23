@@ -58,6 +58,7 @@ jobs:
         uses: actions/checkout@v4
         with:
           ref: main
+          token: ${{ secrets.REMLA_GITHUB_TOKEN }}
 
       - name: Configure Git
         run: |
@@ -82,5 +83,8 @@ jobs:
         run: bumpver update --set-version ${{ env.NEXT_VERSION }}
 
       - name: Push changes to origin
+        env:
+          GIT_TOKEN: ${{ secrets.REMLA_GITHUB_TOKEN }}
         run: |
+          git remote set-url origin https://x-access-token:${REMLA_GITHUB_TOKEN}@github.com/${{ github.repository }}
           git push origin main
