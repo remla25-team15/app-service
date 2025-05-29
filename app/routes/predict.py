@@ -21,7 +21,7 @@ def predict():
               text:
                 type: string
           example:
-              text: "your input data here"}
+              text: "your input data here"
     responses:
       200:
         description: Successful prediction
@@ -31,7 +31,7 @@ def predict():
     try:
         print(f"Data: {request.json}")
         response = requests.post(
-            f"{MODEL_SERVICE_URL}/predict", json=request.json, timeout=5
+            f"{MODEL_SERVICE_URL}/model/predict", json=request.json, timeout=5
         )
         return jsonify(response.json()), response.status_code
     except Exception as e:
