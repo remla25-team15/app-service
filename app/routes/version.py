@@ -26,7 +26,7 @@ def get_versions():
               example: "v1.0.0"
     """
     try:
-        response = requests.get(f"{MODEL_SERVICE_URL}/version", timeout=2)
+        response = requests.get(f"{MODEL_SERVICE_URL}/model/version", timeout=2)
         model_version = response.json().get("version", "unknown")
     except Exception:
         model_version = "unreachable"

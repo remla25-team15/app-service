@@ -2,13 +2,28 @@ import os
 
 from flasgger import Swagger
 from flask import Flask
+from libversion import version
 
 from app.routes import register_blueprints
 
 
 def create_app():
     app = Flask(__name__)
-    swagger = Swagger(app)
+
+    swagger_template = {
+        "swagger": "2.0",
+        "info": {
+            "title": "App Service",
+            "description": "Backend service to communicate with the model",
+            "version": version.VersionUtil.get_version(),
+        },
+        "basePath": "/app",
+        "schemes": ["http"],
+        "consumes": ["application/json"],
+        "produces": ["application/json"],
+    }
+
+    swagger = Swagger(app, template=swagger_template)
 
     app.config["ENV"] = os.getenv("FLASK_ENV", "production")
     app.config["DEBUG"] = os.getenv("DEBUG", "false").lower() == "true"
