@@ -1,6 +1,6 @@
 [project]
 name = "app-service"
-version = "2.0.1-alpha"
+version = "2.0.1"
 description = "Backend server for the application"
 authors = [
     {name = "shreyas",email = "shreyaskalvankar@gmail.com"}
@@ -29,7 +29,7 @@ isort = "^6.0.1"
 pylint = "^3.3.6"
 
 [tool.bumpver]
-current_version = "2.0.1-alpha"
+current_version = "2.0.1"
 version_pattern = "MAJOR.MINOR.PATCH[-TAG]"
 commit = true
 tag = false
