@@ -1,4 +1,4 @@
-name: Build and Push app-service Pre-Release
+name: Release pre-release version for app-service
 
 on:
   push:

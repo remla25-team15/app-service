@@ -1,4 +1,4 @@
-name: Build and Push app-service Image
+name: Release stable version for app-service
 
 on:
   push:
