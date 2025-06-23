@@ -7,12 +7,15 @@ if [[ -n $(git status --porcelain) ]]; then
 fi
 
 # Get current version from bumpver
-BASE_VERSION=$(bumpver show --no-fetch | grep 'Current Version' | awk '{print $3}' | cut -d'-' -f1)
+BASE_VERSION=v$(bumpver show --no-fetch | grep 'Current Version' | awk '{print $3}' | cut -d'-' -f1)
 
 if [ -z "$BASE_VERSION" ]; then
   echo "Could not detect base version from bumpver"
   exit 1
 fi
+
+# Pull tags from origin
+git fetch --tags
 
 # Get branch name (replace slashes with dashes)
 BRANCH=$(git rev-parse --abbrev-ref HEAD | sed 's|/|-|g')
@@ -34,7 +37,7 @@ echo "About to create tag: $NEW_TAG"
 
 # Confirmation prompt
 read -p "Proceed with creating and pushing this tag? (y/N): " CONFIRM
-CONFIRM=${CONFIRM,,}
+CONFIRM=$(echo "$CONFIRM" | tr '[:upper:]' '[:lower:]')
 
 if [[ "$CONFIRM" == "y" || "$CONFIRM" == "yes" ]]; then
   git tag "$NEW_TAG"

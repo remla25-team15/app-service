@@ -3,7 +3,7 @@ name: Release pre-release version for app-service
 on:
   push:
     tags:
-      - "v[0-9]+.[0-9]+.[0-9]+-alpha*"
+      - "v[0-9]+.[0-9]+.[0-9]+-alpha*.*"
 
 env:
   IMG: ghcr.io/${{ github.repository }}
