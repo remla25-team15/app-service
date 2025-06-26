@@ -1,5 +1,8 @@
 # app-service
 
+We recommend running the entire application to in development mode instead of trying to run this service by itself. 
+Instructions can be found here: https://github.com/remla25-team15/operation?tab=readme-ov-file#development-section
+
 ## Instructions for creating a new release
 
 To check the current version of the app run:
